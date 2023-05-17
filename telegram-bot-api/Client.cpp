@@ -4954,6 +4954,9 @@ void Client::on_update_authorization_state() {
       send_request(make_object<td_api::setOption>("disable_time_adjustment_protection",
                                                   make_object<td_api::optionValueBoolean>(true)),
                    td::make_unique<TdOnOkCallback>());
+      send_request(make_object<td_api::setOption>("prefer_ipv6",
+                                                  make_object<td_api::optionValueBoolean>(false)),
+                   td::make_unique<TdOnOkCallback>());
 
       auto request = make_object<td_api::setTdlibParameters>();
       request->use_test_dc_ = is_test_dc_;
